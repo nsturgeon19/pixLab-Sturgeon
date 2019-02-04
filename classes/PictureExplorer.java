@@ -35,48 +35,68 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
   // GUI components
   /** column label */
   private JLabel colLabel;
+
   /** column previous button */
   private JButton colPrevButton;
+
   /** row previous button */
   private JButton rowPrevButton;
+
   /** column next button */
   private JButton colNextButton;
+
   /** row next button */
   private JButton rowNextButton;
+
   /** row label */
   private JLabel rowLabel;
+
   /** text field to show column index */
   private JTextField colValue;
+
   /** text field to show row index */
   private JTextField rowValue;
+
   /** red value label */
   private JLabel rValue;
+
   /** green value label */
   private JLabel gValue;
+
   /** blue value label */
   private JLabel bValue;
+
   /** color swatch label */
   private JLabel colorLabel;
+
   /** panel to show the color swatch */
   private JPanel colorPanel;
   
   // menu components
   /** menu bar */
   private JMenuBar menuBar;
+
   /** zoom menu */
   private JMenu zoomMenu;
+
   /** 25% zoom level */
   private JMenuItem twentyFive;
+
   /** 50% zoom level */
   private JMenuItem fifty;
+
   /** 75% zoom level */
   private JMenuItem seventyFive;
+
   /** 100% zoom level */
   private JMenuItem hundred;
+
   /** 150% zoom level */
   private JMenuItem hundredFifty;
+
   /** 200% zoom level */
   private JMenuItem twoHundred;
+
   /** 500% zoom level */
   private JMenuItem fiveHundred;
   
@@ -800,8 +820,10 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
    */
   public static void main( String args[])
   {
-    Picture pix = new Picture("images/beach.jpg");
-    pix.explore();
+    Picture pix = new Picture("images/Trickstar-Holly-Angel.jpg");
+    Picture smallPix = pix.scale(1.5,1.5);
+    smallPix.explore();
+
   }
   
 }
