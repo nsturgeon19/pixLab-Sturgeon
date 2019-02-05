@@ -1,3 +1,4 @@
+package com.gradescope.pixlab;
 public class IntArrayWorkerTester
 {
   /** method to test setMatrix */
@@ -93,12 +94,12 @@ public class IntArrayWorkerTester
   
   public static void main(String[] args)
   {
-//    testSetMatrix();
-//    testFillPattern1();
-//    testGetCount();
-//    testGetTotal();
-//    testGetTotalNested();
-//    testGetLargest();
+    testSetMatrix();
+    testFillPattern1();
+    testGetCount();
+    testGetTotal();
+    testGetTotalNested();
+    testGetLargest();
     testGetColTotal();
   }
 }
