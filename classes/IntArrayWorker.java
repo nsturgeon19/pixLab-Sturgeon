@@ -123,8 +123,11 @@ public class IntArrayWorker
     return result;
   }
 
-  public int getColTotal () {
+  public int getColTotal (int targetColoumn) {
     int result = 0;
+    for (int row = 0; row < matrix.length; row++) {
+      result += matrix[row][targetColoumn];
+    }
     return result;
   }
 }
