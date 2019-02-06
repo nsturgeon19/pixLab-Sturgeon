@@ -824,6 +824,7 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
     Picture smallPix = pix.scale(1.5,1.5);
     smallPix.explore();
 
+
   }
   
 }

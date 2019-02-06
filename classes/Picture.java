@@ -216,7 +216,18 @@ public class Picture extends SimplePicture
       }
     }
   }
-  
+
+  public void keepOnlyBlue(){
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed(0);
+        pixelObj.setGreen(0);
+      }
+    }
+  }
   
   /* Main method for testing - each class in Java can have a main 
    * method 
