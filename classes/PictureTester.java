@@ -59,6 +59,12 @@ public class PictureTester
     beach.keepOnlyBlue();
     beach.explore();
   }
+
+  public static void testNegate(){
+    Picture beach = new Picture("images/beach.jpg");
+    beach.negate();
+    beach.explore();
+  }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -89,6 +95,7 @@ public class PictureTester
     //testSetRedToHalfValueInTopHalf();
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
-    testKeepOnlyBlue();
+//    testKeepOnlyBlue();
+    testNegate();
   }
 }
