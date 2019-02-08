@@ -248,12 +248,36 @@ public class Picture extends SimplePicture
     {
       for (Pixel pixelObj : rowArray)
       {
-        int average = pixelObj.getBlue();
-        pixelObj.setRed(255-pixelObj.getRed());
-        pixelObj.setGreen(255-pixelObj.getGreen());
-        pixelObj.setBlue(255-pixelObj.getBlue());
+        int average = pixelObj.getBlue() + pixelObj.getGreen() + pixelObj.getRed();
+        average /= 3;
+        pixelObj.setRed(average);
+        pixelObj.setGreen(average);
+        pixelObj.setBlue(average);
       }
     }
+  }
+
+  public void fixUnderwater(){
+      Pixel[][] pixels = this.getPixels2D();
+      for (Pixel[] rowArray : pixels)
+      {
+          for (Pixel pixelObj : rowArray)
+          {
+              pixelObj.setBlue(pixelObj.getBlue()-50);
+              pixelObj.setGreen(pixelObj.getGreen()-50);
+          }
+      }
+  }
+
+  public void mirrorVerticalRightToLeft() {
+      Pixel[][] pixels = this.getPixels2D();
+      for (int row = 0; row < pixels.length; row++)
+      {
+          for (int coloumn = 0; coloumn < pixels[row].length; coloumn++)
+          {
+              pixels[row][coloumn] = pixels[row][pixels[row].length -(coloumn+1)];
+          }
+      }
   }
   
   /* Main method for testing - each class in Java can have a main 
@@ -261,9 +285,7 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
-    beach.explore();
-    beach.zeroBlue();
+    Picture beach = new Picture("images/water.jpg");
     beach.explore();
   }
   

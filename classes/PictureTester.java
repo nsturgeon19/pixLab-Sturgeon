@@ -65,6 +65,24 @@ public class PictureTester
     beach.negate();
     beach.explore();
   }
+
+  public static void testGrayScale(){
+    Picture beach = new Picture("images/beach.jpg");
+    beach.grayScale();
+    beach.explore();
+  }
+
+  public static void testFixUnderWater() {
+    Picture beach = new Picture("images/water.jpg");
+    beach.fixUnderwater();
+    beach.explore();
+  }
+
+  public static void testMirrorVerticalRightToLeft() {
+    Picture beach = new Picture("images/beach.jpg");
+    beach.mirrorVerticalRightToLeft();
+    beach.explore();
+  }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -96,6 +114,9 @@ public class PictureTester
     //testClearBlueOverValue(200);
     //testGetAverageForColumn(0);
 //    testKeepOnlyBlue();
-    testNegate();
+//    testNegate();
+//    testGrayScale();
+//    testFixUnderWater();
+    testMirrorVerticalRightToLeft();
   }
 }
