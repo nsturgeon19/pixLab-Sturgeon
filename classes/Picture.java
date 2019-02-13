@@ -287,7 +287,7 @@ public class Picture extends SimplePicture
     double pixelsLength = pixels.length;
     int counter = 0;
     for (int row = ((int) pixelsLength-1); row > Math.round(pixelsLength/2); row--) {
-      for (int coloumn = 0; coloumn < pixels[coloumn].length; coloumn++){
+      for (int coloumn = 0; coloumn < pixels[row].length; coloumn++){
         System.out.println(row + "," + coloumn);
         System.out.println(row-(row-counter));
         pixels[row][coloumn].setColor(pixels[row-(row-counter)][coloumn].getColor());
