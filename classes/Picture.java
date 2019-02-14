@@ -336,6 +336,10 @@ public class Picture extends SimplePicture
       }
     }
   }
+
+  public void mirrorDiagonal(){
+
+  }
   
   /* Main method for testing - each class in Java can have a main 
    * method 
