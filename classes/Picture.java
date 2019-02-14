@@ -138,8 +138,10 @@ public class Picture extends SimplePicture
         rightPixel = pixels[row]                       
                          [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
+        count++;
       }
     }
+    System.out.println(count);
   }
   
   /** copy from the passed fromPic to the
@@ -288,11 +290,49 @@ public class Picture extends SimplePicture
     int counter = 0;
     for (int row = ((int) pixelsLength-1); row > Math.round(pixelsLength/2); row--) {
       for (int coloumn = 0; coloumn < pixels[row].length; coloumn++){
-        System.out.println(row + "," + coloumn);
-        System.out.println(row-(row-counter));
+//        System.out.println(row + "," + coloumn);
+//        System.out.println(row-(row-counter));
         pixels[row][coloumn].setColor(pixels[row-(row-counter)][coloumn].getColor());
       }
       counter++;
+    }
+  }
+
+  public void mirrorHorizontalBotToTop(){
+    Pixel[][] pixels = this.getPixels2D();
+    double pixelsLength = pixels.length;
+    for (int row = 0; row < Math.round(pixelsLength/2); row++) {
+      for (int coloumn = 0; coloumn < pixels[row].length; coloumn++){
+//        System.out.println(row + "," + coloumn);
+//        System.out.println(row-(row-counter));
+        pixels[row][coloumn].setColor(pixels[(int)pixelsLength-1-row][coloumn].getColor());
+      }
+    }
+  }
+
+  public void mirrorArms(){
+    Pixel[][] pixels = this.getPixels2D();
+    double pixelsLength = pixels.length;
+    for (int row = 155; row < 191; row++) {
+      int targetRow = row-155;
+      for (int coloumn = 100; coloumn < 301; coloumn++){
+//        System.out.println(row + "," + coloumn);
+//        System.out.println(row-(row-counter));
+        pixels[row][coloumn].setColor(pixels[190-targetRow][coloumn].getColor());
+      }
+    }
+  }
+
+  public void mirrorSeagull(){
+    Pixel[][] pixels = this.getPixels2D();
+    for (int row = 230; row < 330; row++)
+    {
+      for (int coloumn = 110; coloumn < 350; coloumn++)
+      {
+        int targetCol = coloumn-110;
+        pixels[row][coloumn].setColor( pixels[row][350-targetCol].getColor());
+        //System.out.println(row+","+coloumn+","+(pixels[row].length -(coloumn+1)));
+      }
     }
   }
   
@@ -301,7 +341,7 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("images/beach.jpg");
+    Picture beach = new Picture("images/seagull.jpg");
     beach.explore();
   }
   
