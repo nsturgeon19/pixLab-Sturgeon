@@ -1,4 +1,4 @@
-package com.gradescope.pixlab;
+//package com.gradescope.pixlab;
 import java.awt.*;
 import java.awt.font.*;
 import java.awt.geom.*;
@@ -340,13 +340,36 @@ public class Picture extends SimplePicture
   public void mirrorDiagonal(){
 
   }
+
+  public void copy(Picture fromPic, int startRow, int startCol,int endRow,int endCol) {
+    Pixel fromPixel = null;
+    Pixel toPixel = null;
+    Pixel[][] toPixels = this.getPixels2D();
+    Pixel[][] fromPixels = fromPic.getPixels2D();
+    for (int fromRow = 0, toRow = startRow; fromRow < endRow && toRow < toPixels.length; fromRow++, toRow++)
+      {
+        for (int fromCol = 0, toCol = startCol; fromCol < endCol && toCol < toPixels[0].length; fromCol++, toCol++)
+          {
+            fromPixel = fromPixels[fromRow][fromCol];
+            toPixel = toPixels[toRow][toCol];
+            toPixel.setColor(fromPixel.getColor());
+          }
+      }
+  }
+
+  public void myCollage(){
+    Picture beach = new Picture("images/beach.jpg");
+    Picture hollyAngel = new Picture("images/Trickstar-Holly-Angel.jpg");
+    beach.copy(hollyAngel,55,25,228,195);
+    beach.explore();
+  }
   
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("images/seagull.jpg");
+    Picture beach = new Picture("images/Trickstar-Holly-Angel.jpg");
     beach.explore();
   }
   

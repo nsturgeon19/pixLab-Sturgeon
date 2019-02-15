@@ -68,7 +68,7 @@ public class PictureTester
 
   public static void testGrayScale(){
     Picture beach = new Picture("images/beach.jpg");
-    beach.grayScale();
+    beach.grayscale();
     beach.explore();
   }
 
@@ -107,6 +107,20 @@ public class PictureTester
     seagull.mirrorSeagull();
     seagull.explore();
   }
+
+  public static void testCopy(){
+    Picture beach = new Picture("images/beach.jpg");
+    Picture arch = new Picture("images/arch.jpg");
+    beach.explore();
+    arch.explore();
+    beach.copy(arch,0,0,100,100);
+    beach.explore();
+  }
+
+  public static void testMyCollage(){
+    Picture beach = new Picture("images/beach.jpg");
+    beach.myCollage();
+  }
   
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -143,6 +157,7 @@ public class PictureTester
 //    testMirrorVerticalRightToLeft();
 //    testMirrorHorizontal();
 //    testMirrorHorizontalBotToTop();
-    testMirrorSeagull();
+//    testMirrorSeagull();
+//    testCopy();
   }
 }
