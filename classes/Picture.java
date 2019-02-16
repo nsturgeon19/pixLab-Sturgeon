@@ -201,18 +201,22 @@ public class Picture extends SimplePicture
   {
     Pixel leftPixel = null;
     Pixel rightPixel = null;
+    Pixel bottomPixel = null;
     Pixel[][] pixels = this.getPixels2D();
     Color rightColor = null;
-    for (int row = 0; row < pixels.length; row++)
+    Color bottomColor = null;
+    for (int row = 0; row < pixels.length-1; row++)
     {
-      for (int col = 0; 
-           col < pixels[0].length-1; col++)
+      for (int col = 0; col < pixels[0].length-1; col++)
       {
         leftPixel = pixels[row][col];
         rightPixel = pixels[row][col+1];
+        bottomPixel = pixels[row+1][col];
         rightColor = rightPixel.getColor();
-        if (leftPixel.colorDistance(rightColor) > 
-            edgeDist)
+        bottomColor = bottomPixel.getColor();
+        if (leftPixel.colorDistance(rightColor) > edgeDist)
+          leftPixel.setColor(Color.BLACK);
+        else if (leftPixel.colorDistance(bottomColor) > edgeDist)
           leftPixel.setColor(Color.BLACK);
         else
           leftPixel.setColor(Color.WHITE);
@@ -227,6 +231,18 @@ public class Picture extends SimplePicture
       for (Pixel pixelObj : rowArray)
       {
         pixelObj.setRed(0);
+        pixelObj.setGreen(0);
+      }
+    }
+  }
+
+  public void keepOnlyRed(){
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setBlue(0);
         pixelObj.setGreen(0);
       }
     }
@@ -359,8 +375,17 @@ public class Picture extends SimplePicture
 
   public void myCollage(){
     Picture beach = new Picture("images/beach.jpg");
-    Picture hollyAngel = new Picture("images/Trickstar-Holly-Angel.jpg");
-    beach.copy(hollyAngel,55,25,228,195);
+    Picture leftArrow = new Picture("classes/leftArrow.gif");
+    Picture rightArrow = new Picture("classes/rightArrow.gif");
+    Picture msg = new Picture("images/msg.jpg");
+    beach.negate();
+    leftArrow.keepOnlyBlue();
+    rightArrow.zeroBlue();
+    beach.copy(leftArrow,430,10);
+    beach.copy(rightArrow,455,10);
+    beach.mirrorSeagull();
+    msg.keepOnlyRed();
+    beach.copy(msg,50,250,100,200);
     beach.explore();
   }
   
